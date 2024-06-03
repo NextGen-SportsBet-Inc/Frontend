@@ -1,0 +1,14 @@
+{
+  "realm": "SportsBetInc",
+  "auth-server-url": "http://localhost:8080/keycloak/",
+  "ssl-required": "external",
+  "resource": "sports-bet-api",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "LN7TXg1bWTa9N4hST8uRM5ZJ3zF4zB9Y"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {
+    "credentials": {}
+  }
+}
