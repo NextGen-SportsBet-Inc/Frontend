@@ -1,31 +1,31 @@
 import Keycloak from "keycloak-js";
 
-const keycloakInstance = new Keycloak();
+const keycloak = new Keycloak(
+    {
+        "url": "http://localhost:8080/keycloak/",
+        "realm": "SportsBetInc",
+        "clientId": "sports-bet-api"
+    }
+);
 
-/**
- * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
- *
- * @param onAuthenticatedCallback
- */
-const Login = (onAuthenticatedCallback: Function) => {
-  keycloakInstance
-    .init({ onLoad: "login-required", 
-    pkceMethod: 'S256' })
-    .then(function (authenticated) {
-      authenticated ? onAuthenticatedCallback() : alert("non authenticated");
-    })
-    .catch((e) => {
-      console.dir(e);
-      console.log(`keycloak init exception: ${e}`);
-    });
+export const handleKeycloakEvent = (event: any) => {
+    switch (event) {
+        case "onAuthSuccess":
+            console.log("Successfully authenticated.");
+            break;
+        case "onAuthError":
+            console.log("Failed to authenticate.");
+            break;
+        case "onAuthRefreshError":
+            console.log("Failed to refresh token.");
+            break;
+        case "onAuthLogout":
+            console.log("Logged out.");
+            break;
+        case "onTokenExpired":
+            console.log("Token expired.");
+            break;
+    }
 };
 
-
-const UserName = () => keycloakInstance.tokenParsed?.preferred_username;
-
-const KeyCloakService = {
-  CallLogin: Login,
-  GetUserName: UserName
-};
-
-export default KeyCloakService;
+export default keycloak;

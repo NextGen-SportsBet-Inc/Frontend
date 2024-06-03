@@ -1,29 +1,15 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import KeyCloakService from './security/KeycloakService'
+import { useKeycloak } from '@react-keycloak/web'
 function App() {
-  console.log(KeyCloakService.GetUserName());
+  const { keycloak, initialized } = useKeycloak()
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        <header className="App-header">
+          <h1>React App</h1>
+        </header>
+        <button onClick={() => keycloak.login()}>Login</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <p>{KeyCloakService.GetUserName()}</p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
