@@ -1,6 +1,6 @@
 export default function Gameitem({ homeTeam, awayTeam, time, odds }) {
     return (
-        <div className="card w-[50rem] bg-neutral text-neutral-content">
+        <div className="card w-[50rem] bg-neutral text-neutral-content shadow-xl">
             <div className="items-center text-center card-body">
                 <div className="grid items-center grid-cols-3 gap-3">
                     <h2 className="text-2xl truncate card-title">{homeTeam}</h2>

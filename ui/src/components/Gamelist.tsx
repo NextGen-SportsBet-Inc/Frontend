@@ -30,10 +30,20 @@ function GameList() {
                 draw: 3.5,
                 away: 3.0
             }
-        }
+        },
+        {
+            homeTeam: "Manchester United",
+            awayTeam: "Chelsea",
+            time: "20:00h",
+            odds: {
+                home: 2.5,
+                draw: 3.0,
+                away: 2.8
+            }
+        },
     ];
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 overflow-scroll">
             {gamesData.map((game, index) => (
                 <Gameitem
                     key={index}
